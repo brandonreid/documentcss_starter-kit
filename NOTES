@@ -1,3 +1,9 @@
 DO THE THINGS:
 	• Readme
 	• Gulp commands
+		• dev
+		• prod
+
+	• add some example template overrides
+	• add a more filled out button page
+	• Note that live reload will create a js tab when viewing the localhost.
