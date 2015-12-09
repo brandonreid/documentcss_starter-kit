@@ -5,8 +5,8 @@
 ## Getting Started
 1. Clone this repo.
 2. Run `npm install`
-3. Install gulp globally if you never have - `npm install -g gulp`
-4. Run `gulp dev` to run a live reloading local server at `http://localhost:4200/`
+3. Install gulp globally if you never have - `npm install -g gulp`. Optionally you can install documentjs globally so you can run the `documentjs` build command - `npm install -g documentjs`.
+4. Run `gulp dev` to run a live reloading local server at `http://localhost:4200/` (you can change this port number in gulpfile.js). Note that live reload may create a js tab when viewing previews on the localhost.
 
 ### How this is structured.
 Make your base patterns here. Import styles.css into your apps. Your apps will have app specific style overrides and stuffs too.
@@ -22,3 +22,4 @@ You'll need to make a repo for your pattern library.
 2. Adding demos.
 3. Customizing the style guide site.
 4. Deploying to gh-pages
+5. Using sass instead of less.

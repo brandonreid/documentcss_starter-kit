@@ -1,1 +1,1 @@
-button{color:red;background-color:#00f}
+button{color:#333;background-color:#eee;border:1px solid #ccc;padding:.45em .75em .55em;border-radius:3px}button.primary{color:#fff;background-color:#006fd9;border-color:#0062c0}button.special{color:#fff;background-color:#20cc00;border-color:#1cb300}
