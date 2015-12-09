@@ -1,9 +1,10 @@
 var gulp = require('gulp');
-var connect = require('gulp-connect');
+var shell = require('gulp-shell');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
-var shell = require('gulp-shell');
+var wrap = require("gulp-wrap");
+var connect = require('gulp-connect');
 
 // Runs "documentjs -w"
 gulp.task('styleguide', shell.task([
@@ -23,12 +24,17 @@ gulp.task('less', function () {
 // Copies the compiled styles to the style guide
 gulp.task('copy-styles', ['less'], function() {
   gulp.src('./dist/styles.css')
-    .pipe(gulp.dest('./styleguide/se-styles'));
+    .pipe(gulp.dest('./styleguide/patterns'));
 });
 
-// Copies the demos to the style guide
+// Wraps each demo with _demo-container.html
+// and copies them to the styleguide
 gulp.task('copy-demos', function () {
-  gulp.src('./less/demos/**/*.html')
+  gulp.src([
+      './less/demos/**/*.html',
+      '!./less/demos/_demo-container.html'
+    ])
+    .pipe(wrap({ src: './less/demos/_demo-container.html' }))
     .pipe(gulp.dest('./styleguide/demos'));
 });
 
