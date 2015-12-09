@@ -1,12 +1,12 @@
 {
   "siteDefaults": {
-    "static": "./less/style-guide-theme"
+    "static": "./style-guide-theme"
   },
   "sites": {
     "styles": {
       "glob": {
         "pattern": "less/**/*.{css,less,md}",
-        "ignore": "less/{demos, style-guide-theme}/**/*"
+        "ignore": "less/{demos,style-guide-theme}/**/*"
       },
       "parent": "styleguide",
       "dest": "styleguide"

@@ -8,8 +8,16 @@ var connect = require('gulp-connect');
 
 // Runs "documentjs -w"
 gulp.task('styleguide', shell.task([
-  './node_modules/.bin/documentjs -w'
+  './node_modules/.bin/documentjs'
 ]));
+gulp.task('force-styleguide', shell.task([
+    './node_modules/.bin/documentjs -f'
+  ])
+);
+gulp.task('recompile-styleguide', ['force-styleguide'], function (event) {
+    gulp.src('./styleguide/*')
+      .pipe(connect.reload());
+});
 
 // Compiles, autoprefixes & minifies the less files
 gulp.task('less', function () {
@@ -49,18 +57,17 @@ gulp.task('server', function () {
 
 // Watches files and auto-refreshes when changes are saved
 gulp.task('watch', function () {
-  gulp.watch([
-    './less/**/*',
-  ], function (event) {
+  gulp.watch(['./less/**/*'], function (event) {
+    // timeout gives documentjs a chance to run first
     setTimeout(function() {
-      // timeout gives documentjs a chance to run first
       return gulp
         .src(event.path)
         .pipe(connect.reload());
       }, 400);
   });
-  gulp.watch(['./less/**/*.less', '!./less/style-guide-theme'], ['less', 'copy-styles']);
+  gulp.watch(['./less/**/*.less'], ['styleguide', 'less', 'copy-styles']);
   gulp.watch(['./less/demos/**/*.html'], ['copy-demos']);
+  gulp.watch(['./style-guide-theme/**/*'], ['recompile-styleguide', 'less', 'copy-styles', 'copy-demos']);
 });
 
 gulp.task('dev', ['styleguide', 'less', 'copy-styles', 'copy-demos', 'server', 'watch']);
