@@ -20,6 +20,6 @@ You'll need to make a repo for your pattern library.
 ## How to do stuff...
 1. Adding your less files and documenting them as you go.
 2. Adding demos.
-3. Customizing the style guide site. -- note, the browser should live reload after everything is done recompiling, generally takes about 5 seconds, you'll probably spam `cmd+shift+r` anyway. :)
+3. Customizing the style guide site. do so in style-guide-theme/styles. original styles come from /// -- note, the browser should live reload after everything is done recompiling, generally takes about 5 seconds, you'll probably spam `cmd+shift+r` anyway. :)
 4. Deploying to gh-pages
 5. Using sass instead of less.

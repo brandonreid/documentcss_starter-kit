@@ -70,4 +70,4 @@ gulp.task('watch', function () {
   gulp.watch(['./style-guide-theme/**/*'], ['recompile-styleguide', 'less', 'copy-styles', 'copy-demos']);
 });
 
-gulp.task('dev', ['styleguide', 'less', 'copy-styles', 'copy-demos', 'server', 'watch']);
+gulp.task('dev', ['force-styleguide', 'less', 'copy-styles', 'copy-demos', 'server', 'watch']);
