@@ -1,4 +1,0 @@
-DO THE THINGS:
-	• Readme
-	• 
-	• Note that live reload will create a js tab when viewing the localhost. Will probably need to create a "gulp prod" to make a final build that doesn't do that.
