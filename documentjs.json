@@ -1,6 +1,7 @@
 {
   "siteDefaults": {
-    "static": "./style-guide-theme"
+    "static": "./style-guide-theme/static",
+    "templates": "./style-guide-theme/templates"
   },
   "sites": {
     "styles": {
