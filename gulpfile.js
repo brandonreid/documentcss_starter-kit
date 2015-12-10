@@ -10,10 +10,13 @@ var connect = require('gulp-connect');
 gulp.task('styleguide', shell.task([
   './node_modules/.bin/documentjs'
 ]));
+// Force styleguide is used when editing template styles.
+// It has to completely rebuild, note that this takes about 5s.
 gulp.task('force-styleguide', shell.task([
     './node_modules/.bin/documentjs -f'
   ])
 );
+// Task that reloads browser after force-styleguide
 gulp.task('recompile-styleguide', ['force-styleguide'], function (event) {
     gulp.src('./styleguide/*')
       .pipe(connect.reload());
@@ -58,7 +61,7 @@ gulp.task('server', function () {
 // Watches files and auto-refreshes when changes are saved
 gulp.task('watch', function () {
   gulp.watch(['./less/**/*'], function (event) {
-    // timeout gives documentjs a chance to run first
+    // timeout gives documentjs a chance to finish compiling first
     setTimeout(function() {
       return gulp
         .src(event.path)

@@ -208,20 +208,15 @@
 
 
 /**
-* @styles cascading-list Cascading List
-*
-* @description
 * Styles `.sidebar-title` as a child of the `.api` list, and up to 5 levels before inheriting the styles of level 1.
-*
-* @demo demos/cascading-list.html
 **/
 .sidebar {
   .api {
     li.active > a.sidebar-title  {
-      font-size: 24px;
+      font-size: 1.25em;
       background-color: @darkSkies;
       border-radius: 6px 6px 0 0;
-      margin-bottom: 20px;
+      margin-bottom: 1em;
     }
     li.active:nth-child(2) > a.sidebar-title,
     li.active:nth-child(3) > a.sidebar-title,
@@ -264,14 +259,14 @@
       > .active:nth-child(5):before   {
         position:absolute;
         content : ' ';
-        left:10px;
-        top:30px;
+        left: 4px;
+        top: 40px;
         z-index : -1;
         width: 0; 
         height: 0; 
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-top: 20px solid @darkSkies;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid @darkSkies;
       }
       > .active:nth-child(2):before {
         border-top: 20px solid lighten(@darkSkies, 10%);

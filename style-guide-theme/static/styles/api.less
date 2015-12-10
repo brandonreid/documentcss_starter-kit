@@ -424,11 +424,16 @@
     li.tab {
       display: block;
       float: left;
-      padding: 6px 10px;
+      padding: 0.25em 0.5em;
       border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      transition: background-color 50ms ease;
       &:first-of-type {
         margin-left: 5px;
-      } 
+      }
+      &:hover, &:focus {
+        background-color: #f8f8f8;
+      }
     }
     li.tab.active {
       color: @clear;
@@ -442,7 +447,7 @@
     iframe {
       width: 100%;
       border: 1px solid @haze;
-      border-radius: 6px;
+      border-radius: 5px;
     }
   }
   body.style-demo {
