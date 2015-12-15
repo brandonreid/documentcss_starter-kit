@@ -6,18 +6,20 @@ var minifyCss = require('gulp-minify-css');
 var wrap = require("gulp-wrap");
 var connect = require('gulp-connect');
 
-// Runs "documentjs -w"
+// Runs the "documentjs" build command
 gulp.task('styleguide', shell.task([
   './node_modules/.bin/documentjs'
 ]));
-// Force styleguide is used when editing template styles.
-// It has to completely rebuild, note that this takes about 5s.
+
+// This is used when editing template styles.
+// It has to completely rebuild the style guide, note that this takes about 5s.
 gulp.task('force-styleguide', shell.task([
     './node_modules/.bin/documentjs -f'
   ])
 );
-// Task that reloads browser after force-styleguide
-gulp.task('recompile-styleguide', ['force-styleguide'], function (event) {
+
+// Task that reloads the browser after force-styleguide
+gulp.task('reload-styleguide', ['force-styleguide'], function (event) {
     gulp.src('./styleguide/*')
       .pipe(connect.reload());
 });
@@ -32,7 +34,7 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./dist'));
 });
 
-// Copies the compiled styles to the style guide
+// Copies the compiled styles to the style guide folder
 gulp.task('copy-styles', ['less'], function() {
   gulp.src('./dist/styles.css')
     .pipe(gulp.dest('./styleguide/patterns'));
@@ -70,7 +72,8 @@ gulp.task('watch', function () {
   });
   gulp.watch(['./less/**/*.less'], ['styleguide', 'less', 'copy-styles']);
   gulp.watch(['./less/demos/**/*.html'], ['copy-demos']);
-  gulp.watch(['./style-guide-theme/**/*'], ['recompile-styleguide', 'less', 'copy-styles', 'copy-demos']);
+  // watches style guide theme files and runs a whole rebuild after saves
+  gulp.watch(['./style-guide-theme/**/*'], ['reload-styleguide', 'less', 'copy-styles', 'copy-demos']);
 });
 
 gulp.task('dev', ['force-styleguide', 'less', 'copy-styles', 'copy-demos', 'server', 'watch']);
