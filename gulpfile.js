@@ -51,6 +51,12 @@ gulp.task('copy-demos', function () {
     .pipe(gulp.dest('./styleguide/demos'));
 });
 
+// Copies the fonts folder
+gulp.task('copy-fonts', function() {
+  gulp.src('./fonts/*')
+    .pipe(gulp.dest('./styleguide/fonts'));
+});
+
 // Runs a server at http://localhost:4200/
 gulp.task('server', function () {
   connect.server({
@@ -73,7 +79,7 @@ gulp.task('watch', function () {
   gulp.watch(['./less/**/*.less'], ['styleguide', 'less', 'copy-styles']);
   gulp.watch(['./less/demos/**/*.html'], ['copy-demos']);
   // watches style guide theme files and runs a whole rebuild after saves
-  gulp.watch(['./style-guide-theme/**/*'], ['reload-styleguide', 'less', 'copy-styles', 'copy-demos']);
+  gulp.watch(['./style-guide-theme/**/*'], ['reload-styleguide', 'less', 'copy-styles', 'copy-demos', 'copy-fonts']);
 });
 
-gulp.task('dev', ['force-styleguide', 'less', 'copy-styles', 'copy-demos', 'server', 'watch']);
+gulp.task('dev', ['force-styleguide', 'less', 'copy-styles', 'copy-demos', 'copy-fonts', 'server', 'watch']);
