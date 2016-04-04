@@ -53,8 +53,9 @@ gulp.task('copy-demos', function () {
 
 // Copies the fonts folder
 gulp.task('copy-fonts', function() {
-  gulp.src('./fonts/*')
-    .pipe(gulp.dest('./styleguide/fonts'));
+  return gulp.src(['./fonts/**/*'], {
+    base: 'src'
+  }).pipe(gulp.dest('./styleguide/fonts'));
 });
 
 // Runs a server at http://localhost:4200/

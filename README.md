@@ -28,7 +28,7 @@ After you `npm install` and run `gulp dev` for the first time, you'll have a fol
 - **root**
 	- node_modules
 	- **dist** - where your compiled and autoprefixed styles will go.
-	- **less** - where your styles files and demo snippets go. Note that the `styles.less` file is your LESS import file that gulp will compile (if you change this files name, update the reference in `gulpfile.js`.
+	- **less** - where your styles files and demo snippets go. Note that the `styles.less` file is your LESS import file that gulp will compile (if you change this files name, update the reference in `gulpfile.js`).
 		- **demos** - where your demo snippets go for style guide examples.
     - **style-guide-theme** - where you modify styles and templates that apply to the style guide itself. Remember that when saving changes here, it takes about 5s to recompile everything, don't spam save!
     - **styleguide** - where your pattern library is generated.
